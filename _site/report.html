@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aaron H. Green">
+<meta name="dcterms.date" content="2025-02-26">
+
+<title>Parametised Financial Reporting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Parametised Financial Reporting</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Aaron H. Green </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 26, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<style type="text/css">
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0056b3;
+}
+
+.cover-page {
+  background-color: #e0f7fa;
+  padding: 50px;
+  text-align: center;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-page h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.cover-page h2 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.cover-page p {
+  font-size: 1.2em;
+}
+
+.cover-lines {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.line {
+  width: 2px;
+  height: 100%;
+  background-color: #0056b3;
+  margin: 0 10px;
+}
+
+.year {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 3em;
+  color: #0056b3;
+  margin: 0 10px;
+}
+</style>
+</div>
+<div style="page-break-after: always;"></div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This report provides a detailed financial analysis of our company’s branches across different regions.</p>
+</section>
+<section id="financial-data-overview" class="level2">
+<h2 class="anchored" data-anchor-id="financial-data-overview">Financial Data Overview</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'financial_data.csv'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(df), <span class="at">format =</span> <span class="st">"pipe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Branch</th>
+<th style="text-align: left;">Region</th>
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Revenue</th>
+<th style="text-align: right;">Sales</th>
+<th style="text-align: right;">Investments</th>
+<th style="text-align: right;">Other_Income</th>
+<th style="text-align: right;">Expenses</th>
+<th style="text-align: right;">Salaries</th>
+<th style="text-align: right;">Rent</th>
+<th style="text-align: right;">Utilities</th>
+<th style="text-align: right;">Other_Expenses</th>
+<th style="text-align: right;">Assets</th>
+<th style="text-align: right;">Liabilities</th>
+<th style="text-align: right;">Equity</th>
+<th style="text-align: right;">CashFlow</th>
+<th style="text-align: right;">Operating_CashFlow</th>
+<th style="text-align: right;">Investing_CashFlow</th>
+<th style="text-align: right;">Financing_CashFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bergstrom-Wuckert</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">9757982</td>
+<td style="text-align: right;">2707951</td>
+<td style="text-align: right;">336361.3</td>
+<td style="text-align: right;">6713670</td>
+<td style="text-align: right;">3505966</td>
+<td style="text-align: right;">484068.6</td>
+<td style="text-align: right;">76182.44</td>
+<td style="text-align: right;">37848.11</td>
+<td style="text-align: right;">2907867.3</td>
+<td style="text-align: right;">11172724</td>
+<td style="text-align: right;">7448603</td>
+<td style="text-align: right;">3724121</td>
+<td style="text-align: right;">687871.8</td>
+<td style="text-align: right;">1113833.1</td>
+<td style="text-align: right;">-778376.3</td>
+<td style="text-align: right;">352414.93</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bergstrom-Wuckert</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">9573681</td>
+<td style="text-align: right;">1380898</td>
+<td style="text-align: right;">233973.4</td>
+<td style="text-align: right;">7958809</td>
+<td style="text-align: right;">7978729</td>
+<td style="text-align: right;">1716307.0</td>
+<td style="text-align: right;">195201.87</td>
+<td style="text-align: right;">40606.90</td>
+<td style="text-align: right;">6026613.6</td>
+<td style="text-align: right;">5493819</td>
+<td style="text-align: right;">5245419</td>
+<td style="text-align: right;">248400</td>
+<td style="text-align: right;">1894036.6</td>
+<td style="text-align: right;">1785398.8</td>
+<td style="text-align: right;">562572.8</td>
+<td style="text-align: right;">-453935.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bergstrom-Wuckert</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">9971547</td>
+<td style="text-align: right;">3267334</td>
+<td style="text-align: right;">164299.7</td>
+<td style="text-align: right;">6539913</td>
+<td style="text-align: right;">2954008</td>
+<td style="text-align: right;">3074470.2</td>
+<td style="text-align: right;">185560.10</td>
+<td style="text-align: right;">89580.82</td>
+<td style="text-align: right;">-395602.7</td>
+<td style="text-align: right;">19715647</td>
+<td style="text-align: right;">2668100</td>
+<td style="text-align: right;">17047547</td>
+<td style="text-align: right;">292466.1</td>
+<td style="text-align: right;">813008.6</td>
+<td style="text-align: right;">-162213.0</td>
+<td style="text-align: right;">-358329.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kertzmann Ltd</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">8360470</td>
+<td style="text-align: right;">4747499</td>
+<td style="text-align: right;">105970.7</td>
+<td style="text-align: right;">3507000</td>
+<td style="text-align: right;">2973414</td>
+<td style="text-align: right;">1470755.7</td>
+<td style="text-align: right;">108757.95</td>
+<td style="text-align: right;">35991.87</td>
+<td style="text-align: right;">1357908.3</td>
+<td style="text-align: right;">16573173</td>
+<td style="text-align: right;">6430321</td>
+<td style="text-align: right;">10142852</td>
+<td style="text-align: right;">2225382.4</td>
+<td style="text-align: right;">1894238.9</td>
+<td style="text-align: right;">137434.6</td>
+<td style="text-align: right;">193708.91</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kertzmann Ltd</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">3630442</td>
+<td style="text-align: right;">1118633</td>
+<td style="text-align: right;">136785.0</td>
+<td style="text-align: right;">2375024</td>
+<td style="text-align: right;">4049731</td>
+<td style="text-align: right;">1530767.0</td>
+<td style="text-align: right;">50259.68</td>
+<td style="text-align: right;">42330.00</td>
+<td style="text-align: right;">2426374.3</td>
+<td style="text-align: right;">13808020</td>
+<td style="text-align: right;">2599923</td>
+<td style="text-align: right;">11208097</td>
+<td style="text-align: right;">1860295.5</td>
+<td style="text-align: right;">923767.6</td>
+<td style="text-align: right;">814361.9</td>
+<td style="text-align: right;">122166.07</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kertzmann Ltd</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">4649410</td>
+<td style="text-align: right;">3177762</td>
+<td style="text-align: right;">305984.5</td>
+<td style="text-align: right;">1165664</td>
+<td style="text-align: right;">8114275</td>
+<td style="text-align: right;">366204.2</td>
+<td style="text-align: right;">141573.09</td>
+<td style="text-align: right;">56800.43</td>
+<td style="text-align: right;">7549697.0</td>
+<td style="text-align: right;">11244720</td>
+<td style="text-align: right;">3509089</td>
+<td style="text-align: right;">7735631</td>
+<td style="text-align: right;">2747552.5</td>
+<td style="text-align: right;">1962392.6</td>
+<td style="text-align: right;">802208.4</td>
+<td style="text-align: right;">-17048.46</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="parameterized-reports-by-branch" class="level2">
+<h2 class="anchored" data-anchor-id="parameterized-reports-by-branch">Parameterized Reports by Branch</h2>
+</section>
+<section id="branch-bergstrom-wuckert" class="level2">
+<h2 class="anchored" data-anchor-id="branch-bergstrom-wuckert">Branch: Bergstrom-Wuckert</h2>
+<section id="balance-sheet" class="level3">
+<h3 class="anchored" data-anchor-id="balance-sheet">Balance Sheet</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Assets</th>
+<th style="text-align: right;">Total_Liabilities</th>
+<th style="text-align: right;">Total_Equity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">11172724</td>
+<td style="text-align: right;">7448603</td>
+<td style="text-align: right;">3724121</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">5493819</td>
+<td style="text-align: right;">5245419</td>
+<td style="text-align: right;">248400</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">19715647</td>
+<td style="text-align: right;">2668100</td>
+<td style="text-align: right;">17047547</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="income-statement" class="level3">
+<h3 class="anchored" data-anchor-id="income-statement">Income Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Revenue</th>
+<th style="text-align: right;">Sales</th>
+<th style="text-align: right;">Investments</th>
+<th style="text-align: right;">Other_Income</th>
+<th style="text-align: right;">Total_Expenses</th>
+<th style="text-align: right;">Salaries</th>
+<th style="text-align: right;">Rent</th>
+<th style="text-align: right;">Utilities</th>
+<th style="text-align: right;">Other_Expenses</th>
+<th style="text-align: right;">Net_Income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">9757982</td>
+<td style="text-align: right;">2707951</td>
+<td style="text-align: right;">336361.3</td>
+<td style="text-align: right;">6713670</td>
+<td style="text-align: right;">3505966</td>
+<td style="text-align: right;">484068.6</td>
+<td style="text-align: right;">76182.44</td>
+<td style="text-align: right;">37848.11</td>
+<td style="text-align: right;">2907867.3</td>
+<td style="text-align: right;">6252016</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">9573681</td>
+<td style="text-align: right;">1380898</td>
+<td style="text-align: right;">233973.4</td>
+<td style="text-align: right;">7958809</td>
+<td style="text-align: right;">7978729</td>
+<td style="text-align: right;">1716307.0</td>
+<td style="text-align: right;">195201.87</td>
+<td style="text-align: right;">40606.90</td>
+<td style="text-align: right;">6026613.6</td>
+<td style="text-align: right;">1594952</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">9971547</td>
+<td style="text-align: right;">3267334</td>
+<td style="text-align: right;">164299.7</td>
+<td style="text-align: right;">6539913</td>
+<td style="text-align: right;">2954008</td>
+<td style="text-align: right;">3074470.2</td>
+<td style="text-align: right;">185560.10</td>
+<td style="text-align: right;">89580.82</td>
+<td style="text-align: right;">-395602.7</td>
+<td style="text-align: right;">7017539</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cash-flow-statement" class="level3">
+<h3 class="anchored" data-anchor-id="cash-flow-statement">Cash Flow Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Operating_CashFlow</th>
+<th style="text-align: right;">Investing_CashFlow</th>
+<th style="text-align: right;">Financing_CashFlow</th>
+<th style="text-align: right;">Total_CashFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">1113833.1</td>
+<td style="text-align: right;">-778376.3</td>
+<td style="text-align: right;">352414.9</td>
+<td style="text-align: right;">687871.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">1785398.8</td>
+<td style="text-align: right;">562572.8</td>
+<td style="text-align: right;">-453935.0</td>
+<td style="text-align: right;">1894036.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">813008.6</td>
+<td style="text-align: right;">-162213.0</td>
+<td style="text-align: right;">-358329.4</td>
+<td style="text-align: right;">292466.1</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="branch-kertzmann-ltd" class="level2">
+<h2 class="anchored" data-anchor-id="branch-kertzmann-ltd">Branch: Kertzmann Ltd</h2>
+<section id="balance-sheet-1" class="level3">
+<h3 class="anchored" data-anchor-id="balance-sheet-1">Balance Sheet</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Assets</th>
+<th style="text-align: right;">Total_Liabilities</th>
+<th style="text-align: right;">Total_Equity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">16573173</td>
+<td style="text-align: right;">6430321</td>
+<td style="text-align: right;">10142852</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">13808020</td>
+<td style="text-align: right;">2599923</td>
+<td style="text-align: right;">11208097</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">11244720</td>
+<td style="text-align: right;">3509089</td>
+<td style="text-align: right;">7735631</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="income-statement-1" class="level3">
+<h3 class="anchored" data-anchor-id="income-statement-1">Income Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Revenue</th>
+<th style="text-align: right;">Sales</th>
+<th style="text-align: right;">Investments</th>
+<th style="text-align: right;">Other_Income</th>
+<th style="text-align: right;">Total_Expenses</th>
+<th style="text-align: right;">Salaries</th>
+<th style="text-align: right;">Rent</th>
+<th style="text-align: right;">Utilities</th>
+<th style="text-align: right;">Other_Expenses</th>
+<th style="text-align: right;">Net_Income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">8360470</td>
+<td style="text-align: right;">4747499</td>
+<td style="text-align: right;">105970.7</td>
+<td style="text-align: right;">3507000</td>
+<td style="text-align: right;">2973414</td>
+<td style="text-align: right;">1470755.7</td>
+<td style="text-align: right;">108757.95</td>
+<td style="text-align: right;">35991.87</td>
+<td style="text-align: right;">1357908</td>
+<td style="text-align: right;">5387055.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">3630442</td>
+<td style="text-align: right;">1118633</td>
+<td style="text-align: right;">136785.0</td>
+<td style="text-align: right;">2375024</td>
+<td style="text-align: right;">4049731</td>
+<td style="text-align: right;">1530767.0</td>
+<td style="text-align: right;">50259.68</td>
+<td style="text-align: right;">42330.00</td>
+<td style="text-align: right;">2426374</td>
+<td style="text-align: right;">-419288.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">4649410</td>
+<td style="text-align: right;">3177762</td>
+<td style="text-align: right;">305984.5</td>
+<td style="text-align: right;">1165664</td>
+<td style="text-align: right;">8114275</td>
+<td style="text-align: right;">366204.2</td>
+<td style="text-align: right;">141573.09</td>
+<td style="text-align: right;">56800.43</td>
+<td style="text-align: right;">7549697</td>
+<td style="text-align: right;">-3464864.3</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cash-flow-statement-1" class="level3">
+<h3 class="anchored" data-anchor-id="cash-flow-statement-1">Cash Flow Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Operating_CashFlow</th>
+<th style="text-align: right;">Investing_CashFlow</th>
+<th style="text-align: right;">Financing_CashFlow</th>
+<th style="text-align: right;">Total_CashFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">1894238.9</td>
+<td style="text-align: right;">137434.6</td>
+<td style="text-align: right;">193708.91</td>
+<td style="text-align: right;">2225382</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">923767.6</td>
+<td style="text-align: right;">814361.9</td>
+<td style="text-align: right;">122166.07</td>
+<td style="text-align: right;">1860296</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">1962392.6</td>
+<td style="text-align: right;">802208.4</td>
+<td style="text-align: right;">-17048.46</td>
+<td style="text-align: right;">2747553</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="branch-conn-green" class="level2">
+<h2 class="anchored" data-anchor-id="branch-conn-green">Branch: Conn-Green</h2>
+<section id="balance-sheet-2" class="level3">
+<h3 class="anchored" data-anchor-id="balance-sheet-2">Balance Sheet</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Assets</th>
+<th style="text-align: right;">Total_Liabilities</th>
+<th style="text-align: right;">Total_Equity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">14740993</td>
+<td style="text-align: right;">2791658</td>
+<td style="text-align: right;">11949335</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">15741714</td>
+<td style="text-align: right;">1129509</td>
+<td style="text-align: right;">14612206</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">19246476</td>
+<td style="text-align: right;">7644519</td>
+<td style="text-align: right;">11601956</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="income-statement-2" class="level3">
+<h3 class="anchored" data-anchor-id="income-statement-2">Income Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Revenue</th>
+<th style="text-align: right;">Sales</th>
+<th style="text-align: right;">Investments</th>
+<th style="text-align: right;">Other_Income</th>
+<th style="text-align: right;">Total_Expenses</th>
+<th style="text-align: right;">Salaries</th>
+<th style="text-align: right;">Rent</th>
+<th style="text-align: right;">Utilities</th>
+<th style="text-align: right;">Other_Expenses</th>
+<th style="text-align: right;">Net_Income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">9033948</td>
+<td style="text-align: right;">3644315</td>
+<td style="text-align: right;">253206.3</td>
+<td style="text-align: right;">5136426.9</td>
+<td style="text-align: right;">2332953</td>
+<td style="text-align: right;">241976.8</td>
+<td style="text-align: right;">96233.78</td>
+<td style="text-align: right;">83014.08</td>
+<td style="text-align: right;">1911729</td>
+<td style="text-align: right;">6700995</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">2308803</td>
+<td style="text-align: right;">4510668</td>
+<td style="text-align: right;">380547.9</td>
+<td style="text-align: right;">-2582412.8</td>
+<td style="text-align: right;">6441364</td>
+<td style="text-align: right;">2588521.2</td>
+<td style="text-align: right;">199945.76</td>
+<td style="text-align: right;">54821.52</td>
+<td style="text-align: right;">3598075</td>
+<td style="text-align: right;">-4132561</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">4021902</td>
+<td style="text-align: right;">4115947</td>
+<td style="text-align: right;">229220.0</td>
+<td style="text-align: right;">-323264.9</td>
+<td style="text-align: right;">7424401</td>
+<td style="text-align: right;">1268925.3</td>
+<td style="text-align: right;">68739.24</td>
+<td style="text-align: right;">72541.69</td>
+<td style="text-align: right;">6014195</td>
+<td style="text-align: right;">-3402499</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cash-flow-statement-2" class="level3">
+<h3 class="anchored" data-anchor-id="cash-flow-statement-2">Cash Flow Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Operating_CashFlow</th>
+<th style="text-align: right;">Investing_CashFlow</th>
+<th style="text-align: right;">Financing_CashFlow</th>
+<th style="text-align: right;">Total_CashFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">919098.2</td>
+<td style="text-align: right;">900395.4</td>
+<td style="text-align: right;">275824.2</td>
+<td style="text-align: right;">2095318</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">1195658.9</td>
+<td style="text-align: right;">486224.3</td>
+<td style="text-align: right;">444197.7</td>
+<td style="text-align: right;">2126081</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">1751063.2</td>
+<td style="text-align: right;">-611187.7</td>
+<td style="text-align: right;">183899.7</td>
+<td style="text-align: right;">1323775</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="branch-oberbrunner-plc" class="level2">
+<h2 class="anchored" data-anchor-id="branch-oberbrunner-plc">Branch: Oberbrunner PLC</h2>
+<section id="balance-sheet-3" class="level3">
+<h3 class="anchored" data-anchor-id="balance-sheet-3">Balance Sheet</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Assets</th>
+<th style="text-align: right;">Total_Liabilities</th>
+<th style="text-align: right;">Total_Equity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">19484549</td>
+<td style="text-align: right;">2398556</td>
+<td style="text-align: right;">17085993</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">19449717</td>
+<td style="text-align: right;">7366315</td>
+<td style="text-align: right;">12083401</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">18861949</td>
+<td style="text-align: right;">5816235</td>
+<td style="text-align: right;">13045714</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="income-statement-3" class="level3">
+<h3 class="anchored" data-anchor-id="income-statement-3">Income Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Revenue</th>
+<th style="text-align: right;">Sales</th>
+<th style="text-align: right;">Investments</th>
+<th style="text-align: right;">Other_Income</th>
+<th style="text-align: right;">Total_Expenses</th>
+<th style="text-align: right;">Salaries</th>
+<th style="text-align: right;">Rent</th>
+<th style="text-align: right;">Utilities</th>
+<th style="text-align: right;">Other_Expenses</th>
+<th style="text-align: right;">Net_Income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">7015650</td>
+<td style="text-align: right;">2716510</td>
+<td style="text-align: right;">372342.6</td>
+<td style="text-align: right;">3926798</td>
+<td style="text-align: right;">7481464</td>
+<td style="text-align: right;">581903.3</td>
+<td style="text-align: right;">192042.7</td>
+<td style="text-align: right;">88638.35</td>
+<td style="text-align: right;">6618880</td>
+<td style="text-align: right;">-465813.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">2591986</td>
+<td style="text-align: right;">3507716</td>
+<td style="text-align: right;">305139.6</td>
+<td style="text-align: right;">-1220870</td>
+<td style="text-align: right;">4920764</td>
+<td style="text-align: right;">3232920.8</td>
+<td style="text-align: right;">117167.3</td>
+<td style="text-align: right;">92295.37</td>
+<td style="text-align: right;">1478380</td>
+<td style="text-align: right;">-2328778.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">5377444</td>
+<td style="text-align: right;">1328355</td>
+<td style="text-align: right;">278372.1</td>
+<td style="text-align: right;">3770717</td>
+<td style="text-align: right;">3659401</td>
+<td style="text-align: right;">1856353.2</td>
+<td style="text-align: right;">134329.2</td>
+<td style="text-align: right;">62233.40</td>
+<td style="text-align: right;">1606485</td>
+<td style="text-align: right;">1718042.6</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cash-flow-statement-3" class="level3">
+<h3 class="anchored" data-anchor-id="cash-flow-statement-3">Cash Flow Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Operating_CashFlow</th>
+<th style="text-align: right;">Investing_CashFlow</th>
+<th style="text-align: right;">Financing_CashFlow</th>
+<th style="text-align: right;">Total_CashFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">1036805.6</td>
+<td style="text-align: right;">287686.8</td>
+<td style="text-align: right;">-56494.31</td>
+<td style="text-align: right;">1267998.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">903056.6</td>
+<td style="text-align: right;">-308985.7</td>
+<td style="text-align: right;">-64830.42</td>
+<td style="text-align: right;">529240.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">1471283.9</td>
+<td style="text-align: right;">532650.5</td>
+<td style="text-align: right;">-288733.80</td>
+<td style="text-align: right;">1715200.6</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="branch-corkery-beatty" class="level2">
+<h2 class="anchored" data-anchor-id="branch-corkery-beatty">Branch: Corkery-Beatty</h2>
+<section id="balance-sheet-4" class="level3">
+<h3 class="anchored" data-anchor-id="balance-sheet-4">Balance Sheet</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Assets</th>
+<th style="text-align: right;">Total_Liabilities</th>
+<th style="text-align: right;">Total_Equity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">18279954</td>
+<td style="text-align: right;">4069063</td>
+<td style="text-align: right;">14210891</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">5488619</td>
+<td style="text-align: right;">7071023</td>
+<td style="text-align: right;">-1582404</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">11828091</td>
+<td style="text-align: right;">3560093</td>
+<td style="text-align: right;">8267998</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="income-statement-4" class="level3">
+<h3 class="anchored" data-anchor-id="income-statement-4">Income Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Total_Revenue</th>
+<th style="text-align: right;">Sales</th>
+<th style="text-align: right;">Investments</th>
+<th style="text-align: right;">Other_Income</th>
+<th style="text-align: right;">Total_Expenses</th>
+<th style="text-align: right;">Salaries</th>
+<th style="text-align: right;">Rent</th>
+<th style="text-align: right;">Utilities</th>
+<th style="text-align: right;">Other_Expenses</th>
+<th style="text-align: right;">Net_Income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">2052380</td>
+<td style="text-align: right;">2160819.0</td>
+<td style="text-align: right;">460327.3</td>
+<td style="text-align: right;">-568766.6</td>
+<td style="text-align: right;">503219.5</td>
+<td style="text-align: right;">314564.0</td>
+<td style="text-align: right;">151391.3</td>
+<td style="text-align: right;">93991.37</td>
+<td style="text-align: right;">-56727.14</td>
+<td style="text-align: right;">1549160.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">3884104</td>
+<td style="text-align: right;">1648338.0</td>
+<td style="text-align: right;">334220.4</td>
+<td style="text-align: right;">1901545.8</td>
+<td style="text-align: right;">3517649.5</td>
+<td style="text-align: right;">2481742.5</td>
+<td style="text-align: right;">198090.1</td>
+<td style="text-align: right;">51462.29</td>
+<td style="text-align: right;">786354.61</td>
+<td style="text-align: right;">366454.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">7243473</td>
+<td style="text-align: right;">664020.6</td>
+<td style="text-align: right;">179953.4</td>
+<td style="text-align: right;">6399498.6</td>
+<td style="text-align: right;">4210494.6</td>
+<td style="text-align: right;">600917.1</td>
+<td style="text-align: right;">76674.4</td>
+<td style="text-align: right;">47488.90</td>
+<td style="text-align: right;">3485414.23</td>
+<td style="text-align: right;">3032978.0</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cash-flow-statement-4" class="level3">
+<h3 class="anchored" data-anchor-id="cash-flow-statement-4">Cash Flow Statement</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Operating_CashFlow</th>
+<th style="text-align: right;">Investing_CashFlow</th>
+<th style="text-align: right;">Financing_CashFlow</th>
+<th style="text-align: right;">Total_CashFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">326310.5</td>
+<td style="text-align: right;">762412.7</td>
+<td style="text-align: right;">-382859.6</td>
+<td style="text-align: right;">705863.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">731907.3</td>
+<td style="text-align: right;">388147.6</td>
+<td style="text-align: right;">393875.1</td>
+<td style="text-align: right;">1513930.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">1978750.9</td>
+<td style="text-align: right;">-921286.3</td>
+<td style="text-align: right;">-187912.9</td>
+<td style="text-align: right;">869551.7</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

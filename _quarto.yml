@@ -1,13 +1,13 @@
 project:
-  type: book
+  type: website
 
 book:
   title: "Financial Report"
-  author: "Your Name"
+  author: "arhgreen"
   date: "2025-02-26"
   chapters: 
     - report.qmd
 format:
   pdf:
     keep-md: true
-    include-in-header: styles.css
+    output-file: "Financial_Report.pdf"

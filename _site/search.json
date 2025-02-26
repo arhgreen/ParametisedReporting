@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "report.html#introduction",
+    "href": "report.html#introduction",
+    "title": "Parametised Financial Reporting",
+    "section": "Introduction",
+    "text": "Introduction\nThis report provides a detailed financial analysis of our company’s branches across different regions."
+  },
+  {
+    "objectID": "report.html#financial-data-overview",
+    "href": "report.html#financial-data-overview",
+    "title": "Parametised Financial Reporting",
+    "section": "Financial Data Overview",
+    "text": "Financial Data Overview\n\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(knitr)\n\n# Load data\ndf &lt;- read.csv('financial_data.csv')\n\nkable(head(df), format = \"pipe\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBranch\nRegion\nYear\nRevenue\nSales\nInvestments\nOther_Income\nExpenses\nSalaries\nRent\nUtilities\nOther_Expenses\nAssets\nLiabilities\nEquity\nCashFlow\nOperating_CashFlow\nInvesting_CashFlow\nFinancing_CashFlow\n\n\n\n\nBergstrom-Wuckert\nAfrica\n2023\n9757982\n2707951\n336361.3\n6713670\n3505966\n484068.6\n76182.44\n37848.11\n2907867.3\n11172724\n7448603\n3724121\n687871.8\n1113833.1\n-778376.3\n352414.93\n\n\nBergstrom-Wuckert\nAfrica\n2024\n9573681\n1380898\n233973.4\n7958809\n7978729\n1716307.0\n195201.87\n40606.90\n6026613.6\n5493819\n5245419\n248400\n1894036.6\n1785398.8\n562572.8\n-453935.02\n\n\nBergstrom-Wuckert\nAfrica\n2025\n9971547\n3267334\n164299.7\n6539913\n2954008\n3074470.2\n185560.10\n89580.82\n-395602.7\n19715647\n2668100\n17047547\n292466.1\n813008.6\n-162213.0\n-358329.42\n\n\nKertzmann Ltd\nAfrica\n2023\n8360470\n4747499\n105970.7\n3507000\n2973414\n1470755.7\n108757.95\n35991.87\n1357908.3\n16573173\n6430321\n10142852\n2225382.4\n1894238.9\n137434.6\n193708.91\n\n\nKertzmann Ltd\nAfrica\n2024\n3630442\n1118633\n136785.0\n2375024\n4049731\n1530767.0\n50259.68\n42330.00\n2426374.3\n13808020\n2599923\n11208097\n1860295.5\n923767.6\n814361.9\n122166.07\n\n\nKertzmann Ltd\nAfrica\n2025\n4649410\n3177762\n305984.5\n1165664\n8114275\n366204.2\n141573.09\n56800.43\n7549697.0\n11244720\n3509089\n7735631\n2747552.5\n1962392.6\n802208.4\n-17048.46"
+  },
+  {
+    "objectID": "report.html#parameterized-reports-by-branch",
+    "href": "report.html#parameterized-reports-by-branch",
+    "title": "Parametised Financial Reporting",
+    "section": "Parameterized Reports by Branch",
+    "text": "Parameterized Reports by Branch"
+  },
+  {
+    "objectID": "report.html#branch-bergstrom-wuckert",
+    "href": "report.html#branch-bergstrom-wuckert",
+    "title": "Parametised Financial Reporting",
+    "section": "Branch: Bergstrom-Wuckert",
+    "text": "Branch: Bergstrom-Wuckert\n\nBalance Sheet\n\n\n\nYear\nTotal_Assets\nTotal_Liabilities\nTotal_Equity\n\n\n\n\n2023\n11172724\n7448603\n3724121\n\n\n2024\n5493819\n5245419\n248400\n\n\n2025\n19715647\n2668100\n17047547\n\n\n\n\n\nIncome Statement\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYear\nTotal_Revenue\nSales\nInvestments\nOther_Income\nTotal_Expenses\nSalaries\nRent\nUtilities\nOther_Expenses\nNet_Income\n\n\n\n\n2023\n9757982\n2707951\n336361.3\n6713670\n3505966\n484068.6\n76182.44\n37848.11\n2907867.3\n6252016\n\n\n2024\n9573681\n1380898\n233973.4\n7958809\n7978729\n1716307.0\n195201.87\n40606.90\n6026613.6\n1594952\n\n\n2025\n9971547\n3267334\n164299.7\n6539913\n2954008\n3074470.2\n185560.10\n89580.82\n-395602.7\n7017539\n\n\n\n\n\nCash Flow Statement\n\n\n\n\n\n\n\n\n\n\nYear\nOperating_CashFlow\nInvesting_CashFlow\nFinancing_CashFlow\nTotal_CashFlow\n\n\n\n\n2023\n1113833.1\n-778376.3\n352414.9\n687871.8\n\n\n2024\n1785398.8\n562572.8\n-453935.0\n1894036.6\n\n\n2025\n813008.6\n-162213.0\n-358329.4\n292466.1"
+  },
+  {
+    "objectID": "report.html#branch-kertzmann-ltd",
+    "href": "report.html#branch-kertzmann-ltd",
+    "title": "Parametised Financial Reporting",
+    "section": "Branch: Kertzmann Ltd",
+    "text": "Branch: Kertzmann Ltd\n\nBalance Sheet\n\n\n\nYear\nTotal_Assets\nTotal_Liabilities\nTotal_Equity\n\n\n\n\n2023\n16573173\n6430321\n10142852\n\n\n2024\n13808020\n2599923\n11208097\n\n\n2025\n11244720\n3509089\n7735631\n\n\n\n\n\nIncome Statement\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYear\nTotal_Revenue\nSales\nInvestments\nOther_Income\nTotal_Expenses\nSalaries\nRent\nUtilities\nOther_Expenses\nNet_Income\n\n\n\n\n2023\n8360470\n4747499\n105970.7\n3507000\n2973414\n1470755.7\n108757.95\n35991.87\n1357908\n5387055.8\n\n\n2024\n3630442\n1118633\n136785.0\n2375024\n4049731\n1530767.0\n50259.68\n42330.00\n2426374\n-419288.5\n\n\n2025\n4649410\n3177762\n305984.5\n1165664\n8114275\n366204.2\n141573.09\n56800.43\n7549697\n-3464864.3\n\n\n\n\n\nCash Flow Statement\n\n\n\n\n\n\n\n\n\n\nYear\nOperating_CashFlow\nInvesting_CashFlow\nFinancing_CashFlow\nTotal_CashFlow\n\n\n\n\n2023\n1894238.9\n137434.6\n193708.91\n2225382\n\n\n2024\n923767.6\n814361.9\n122166.07\n1860296\n\n\n2025\n1962392.6\n802208.4\n-17048.46\n2747553"
+  },
+  {
+    "objectID": "report.html#branch-conn-green",
+    "href": "report.html#branch-conn-green",
+    "title": "Parametised Financial Reporting",
+    "section": "Branch: Conn-Green",
+    "text": "Branch: Conn-Green\n\nBalance Sheet\n\n\n\nYear\nTotal_Assets\nTotal_Liabilities\nTotal_Equity\n\n\n\n\n2023\n14740993\n2791658\n11949335\n\n\n2024\n15741714\n1129509\n14612206\n\n\n2025\n19246476\n7644519\n11601956\n\n\n\n\n\nIncome Statement\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYear\nTotal_Revenue\nSales\nInvestments\nOther_Income\nTotal_Expenses\nSalaries\nRent\nUtilities\nOther_Expenses\nNet_Income\n\n\n\n\n2023\n9033948\n3644315\n253206.3\n5136426.9\n2332953\n241976.8\n96233.78\n83014.08\n1911729\n6700995\n\n\n2024\n2308803\n4510668\n380547.9\n-2582412.8\n6441364\n2588521.2\n199945.76\n54821.52\n3598075\n-4132561\n\n\n2025\n4021902\n4115947\n229220.0\n-323264.9\n7424401\n1268925.3\n68739.24\n72541.69\n6014195\n-3402499\n\n\n\n\n\nCash Flow Statement\n\n\n\n\n\n\n\n\n\n\nYear\nOperating_CashFlow\nInvesting_CashFlow\nFinancing_CashFlow\nTotal_CashFlow\n\n\n\n\n2023\n919098.2\n900395.4\n275824.2\n2095318\n\n\n2024\n1195658.9\n486224.3\n444197.7\n2126081\n\n\n2025\n1751063.2\n-611187.7\n183899.7\n1323775"
+  },
+  {
+    "objectID": "report.html#branch-oberbrunner-plc",
+    "href": "report.html#branch-oberbrunner-plc",
+    "title": "Parametised Financial Reporting",
+    "section": "Branch: Oberbrunner PLC",
+    "text": "Branch: Oberbrunner PLC\n\nBalance Sheet\n\n\n\nYear\nTotal_Assets\nTotal_Liabilities\nTotal_Equity\n\n\n\n\n2023\n19484549\n2398556\n17085993\n\n\n2024\n19449717\n7366315\n12083401\n\n\n2025\n18861949\n5816235\n13045714\n\n\n\n\n\nIncome Statement\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYear\nTotal_Revenue\nSales\nInvestments\nOther_Income\nTotal_Expenses\nSalaries\nRent\nUtilities\nOther_Expenses\nNet_Income\n\n\n\n\n2023\n7015650\n2716510\n372342.6\n3926798\n7481464\n581903.3\n192042.7\n88638.35\n6618880\n-465813.8\n\n\n2024\n2591986\n3507716\n305139.6\n-1220870\n4920764\n3232920.8\n117167.3\n92295.37\n1478380\n-2328778.0\n\n\n2025\n5377444\n1328355\n278372.1\n3770717\n3659401\n1856353.2\n134329.2\n62233.40\n1606485\n1718042.6\n\n\n\n\n\nCash Flow Statement\n\n\n\n\n\n\n\n\n\n\nYear\nOperating_CashFlow\nInvesting_CashFlow\nFinancing_CashFlow\nTotal_CashFlow\n\n\n\n\n2023\n1036805.6\n287686.8\n-56494.31\n1267998.1\n\n\n2024\n903056.6\n-308985.7\n-64830.42\n529240.5\n\n\n2025\n1471283.9\n532650.5\n-288733.80\n1715200.6"
+  },
+  {
+    "objectID": "report.html#branch-corkery-beatty",
+    "href": "report.html#branch-corkery-beatty",
+    "title": "Parametised Financial Reporting",
+    "section": "Branch: Corkery-Beatty",
+    "text": "Branch: Corkery-Beatty\n\nBalance Sheet\n\n\n\nYear\nTotal_Assets\nTotal_Liabilities\nTotal_Equity\n\n\n\n\n2023\n18279954\n4069063\n14210891\n\n\n2024\n5488619\n7071023\n-1582404\n\n\n2025\n11828091\n3560093\n8267998\n\n\n\n\n\nIncome Statement\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYear\nTotal_Revenue\nSales\nInvestments\nOther_Income\nTotal_Expenses\nSalaries\nRent\nUtilities\nOther_Expenses\nNet_Income\n\n\n\n\n2023\n2052380\n2160819.0\n460327.3\n-568766.6\n503219.5\n314564.0\n151391.3\n93991.37\n-56727.14\n1549160.2\n\n\n2024\n3884104\n1648338.0\n334220.4\n1901545.8\n3517649.5\n2481742.5\n198090.1\n51462.29\n786354.61\n366454.6\n\n\n2025\n7243473\n664020.6\n179953.4\n6399498.6\n4210494.6\n600917.1\n76674.4\n47488.90\n3485414.23\n3032978.0\n\n\n\n\n\nCash Flow Statement\n\n\n\n\n\n\n\n\n\n\nYear\nOperating_CashFlow\nInvesting_CashFlow\nFinancing_CashFlow\nTotal_CashFlow\n\n\n\n\n2023\n326310.5\n762412.7\n-382859.6\n705863.6\n\n\n2024\n731907.3\n388147.6\n393875.1\n1513930.1\n\n\n2025\n1978750.9\n-921286.3\n-187912.9\n869551.7"
+  }
+]

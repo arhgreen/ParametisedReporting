@@ -1,18 +1,90 @@
 ---
-title: "Financial Report"
-author: "Your Name"
+title: "Parametised Financial Reporting"
+author: "Aaron H. Green"
 date: "2025-02-26"
-format: pdf
-include-in-header: styles.css
+format: html
+execute: 
+  warning: false
+  error: false
 ---
 
-# Financial Report
+```{css, echo=FALSE}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0056b3;
+}
+
+.cover-page {
+  background-color: #e0f7fa;
+  padding: 50px;
+  text-align: center;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-page h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.cover-page h2 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.cover-page p {
+  font-size: 1.2em;
+}
+
+.cover-lines {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.line {
+  width: 2px;
+  height: 100%;
+  background-color: #0056b3;
+  margin: 0 10px;
+}
+
+.year {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 3em;
+  color: #0056b3;
+  margin: 0 10px;
+}
+```
+
+\newpage
 
 ## Introduction
 
 This report provides a detailed financial analysis of our company's branches across different regions.
 
-## Financial Data
+## Financial Data Overview
 
 ```{r}
 library(tibble)
@@ -25,42 +97,54 @@ df <- read.csv('financial_data.csv')
 kable(head(df), format = "pipe")
 ```
 
-## Balance Sheet
+## Parameterized Reports by Branch
 
-```{r}
-balance_sheet <- df %>%
-  group_by(Branch, Year) %>%
-  summarise(
-    Total_Assets = sum(Assets),
-    Total_Liabilities = sum(Liabilities),
-    Total_Equity = sum(Equity)
-  )
-
-kable(balance_sheet, format = "pipe")
-```
-
-## Income Statement
-
-```{r}
-income_statement <- df %>%
-  group_by(Branch, Year) %>%
-  summarise(
-    Total_Income = sum(Income),
-    Total_Expenses = sum(Expenses),
-    Net_Income = sum(Income) - sum(Expenses)
-  )
-
-kable(income_statement, format = "pipe")
-```
-
-## Cash Flow Statement
-
-```{r}
-cash_flow_statement <- df %>%
-  group_by(Branch, Year) %>%
-  summarise(
-    Total_CashFlow = sum(CashFlow)
-  )
-
-kable(cash_flow_statement, format = "pipe")
+```{r, results='asis', echo=FALSE}
+branches <- unique(df$Branch)
+for (branch in branches) {
+  cat("## Branch: ", branch, "\n\n")
+  
+  branch_data <- df %>% filter(Branch == branch)
+  
+  cat("### Balance Sheet\n")
+  balance_sheet <- branch_data %>%
+    group_by(Year) %>%
+    summarise(
+      Total_Assets = sum(Assets),
+      Total_Liabilities = sum(Liabilities),
+      Total_Equity = sum(Equity)
+    )
+  print(kable(balance_sheet, format = "pipe"))
+  cat("\n")
+  
+  cat("### Income Statement\n")
+  income_statement <- branch_data %>%
+    group_by(Year) %>%
+    summarise(
+      Total_Revenue = sum(Revenue),
+      Sales = sum(Sales),
+      Investments = sum(Investments),
+      Other_Income = sum(Other_Income),
+      Total_Expenses = sum(Expenses),
+      Salaries = sum(Salaries),
+      Rent = sum(Rent),
+      Utilities = sum(Utilities),
+      Other_Expenses = sum(Other_Expenses),
+      Net_Income = sum(Revenue) - sum(Expenses)
+    )
+  print(kable(income_statement, format = "pipe"))
+  cat("\n")
+  
+  cat("### Cash Flow Statement\n")
+  cash_flow_statement <- branch_data %>%
+    group_by(Year) %>%
+    summarise(
+      Operating_CashFlow = sum(Operating_CashFlow),
+      Investing_CashFlow = sum(Investing_CashFlow),
+      Financing_CashFlow = sum(Financing_CashFlow),
+      Total_CashFlow = sum(CashFlow)
+    )
+  print(kable(cash_flow_statement, format = "pipe"))
+  cat("\n")
+}
 ```
