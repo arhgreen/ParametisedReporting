@@ -6,7 +6,7 @@ format:
   html:
     toc: true
     toc-location: left
-    toc-title: Table of content
+    toc-title: Table of contents
     html-math-method: katex
 df-print: kable
 execute: 
