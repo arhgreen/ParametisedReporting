@@ -1,13 +1,14 @@
 ---
-title: "Parametised Financial Reporting"
+title: "Parametised Financial Reporting in R with Quarto"
 author: "Aaron H. Green"
 date: "2025-02-26"
 format:
   html:
-    pdf:
-      toc: true
+    toc: true
     toc-location: left
+    toc-title: Table of content
     html-math-method: katex
+df-print: kable
 execute: 
   warning: false
   error: false
@@ -15,13 +16,55 @@ execute:
 
 css: styles.css
 ---
+
 \newpage
 
-## Introduction
+## Overview
 
-This report provides a detailed financial analysis of our company's branches across different regions.
+Financial reporting is a critical function for any business, enabling stakeholders to assess performance, identify trends, and make data-driven decisions. Traditionally, many companies rely on manual Excel work to generate financial reports, which can be time-consuming, error-prone, and difficult to scale. This project leverages Quarto and R to build a parametised financial reporting system that automates the generation of income statements, balance sheets, and workflow statements for different company branches. By adopting parametised reporting, companies can significantly improve efficiency, accuracy, and reproducibility in their financial workflows.
 
-## Financial Data Overview
+## Scope of the Project
+
+This project is designed to handle financial reporting for multiple branches of a company by utilising a parametised approach in Quarto. The core components include:
+
+1.  Income Statements – Automating revenue, expenses, and profitability reporting.
+2.  Balance Sheets – Structuring assets, liabilities, and equity analysis for different time periods.
+3.  Workflow Statements – Capturing financial movement and operational efficiency metrics.
+4.  Branch-wise Customization – Generating reports dynamically for different business units, eliminating the need for manual adjustments.
+
+The Quarto framework, combined with R Markdown, provides an elegant and scalable way to generate financial reports that are adaptable, data-driven, and reproducible.
+
+## Why parametised reporting is better than manual Excel work
+
+Many organizations still rely on Excel for financial reporting, often involving extensive manual data entry and formatting. While Excel is a powerful tool, it presents several challenges:
+
+-   Human Error: Manual data entry increases the risk of errors in calculations and formatting.
+
+-   Time-Consuming: Preparing reports for multiple branches or time periods requires repetitive work.
+
+-   Lack of Reproducibility: Each report is manually created, making it difficult to track changes and ensure consistency.
+
+-   Scalability Issues: As businesses grow, Excel-based workflows struggle to handle larger datasets efficiently.
+
+-   Limited Automation: Advanced data manipulation, filtering, and summarisation require complex VBA scripts, which are difficult to maintain.
+
+By using parametised reporting in R with Quarto, we can:
+
+-   Automate Report Generation: Reduce time spent on redundant tasks by dynamically generating reports for different branches.
+
+-   Enhance Accuracy: Minimize human error through direct data integration and automated calculations.
+
+-   Ensure Reproducibility: Easily track report versions and updates using a structured codebase.
+
+-   Improve Customization: Generate tailored reports with filters and dynamic content for specific business needs.
+
+-   Increase Scalability: Handle large datasets and complex financial structures with ease.
+
+## Conclusion
+
+This project provides a robust framework for financial reporting by leveraging the power of Quarto and R. By transitioning from manual Excel-based workflows to a data-driven, automated approach, businesses can streamline reporting, reduce errors, and improve decision-making processes. Through parametised reporting, companies can ensure consistency, efficiency, and scalability, making financial analysis more insightful and actionable. As we proceed, we will explore the step-by-step implementation of this system, covering data handling, report structuring, parameter integration, and final output generation to demonstrate the full potential of Quarto for financial reporting.
+
+## Financial overview
 
 ```{r}
 library(tibble)
@@ -34,7 +77,7 @@ df <- read.csv('financial_data.csv')
 kable(head(df), format = "pipe")
 ```
 
-## Parameterized Reports by Branch
+## Parameterised Reports by Branch
 
 ```{r, results='asis', echo=FALSE, results='asis'}
 branches <- unique(df$Branch)

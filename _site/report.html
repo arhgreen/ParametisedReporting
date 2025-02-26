@@ -9,7 +9,7 @@
 <meta name="author" content="Aaron H. Green">
 <meta name="dcterms.date" content="2025-02-26">
 
-<title>Parametised Financial Reporting</title>
+<title>Parametised Financial Reporting in R with Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,48 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of content</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#scope-of-the-project" id="toc-scope-of-the-project" class="nav-link" data-scroll-target="#scope-of-the-project">Scope of the Project</a></li>
+  <li><a href="#why-parametised-reporting-is-better-than-manual-excel-work" id="toc-why-parametised-reporting-is-better-than-manual-excel-work" class="nav-link" data-scroll-target="#why-parametised-reporting-is-better-than-manual-excel-work">Why parametised reporting is better than manual Excel work</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#financial-overview" id="toc-financial-overview" class="nav-link" data-scroll-target="#financial-overview">Financial overview</a></li>
+  <li><a href="#parameterised-reports-by-branch" id="toc-parameterised-reports-by-branch" class="nav-link" data-scroll-target="#parameterised-reports-by-branch">Parameterised Reports by Branch</a></li>
+  <li><a href="#branch-ward-inc" id="toc-branch-ward-inc" class="nav-link" data-scroll-target="#branch-ward-inc">Branch: Ward Inc</a>
+  <ul class="collapse">
+  <li><a href="#balance-sheet" id="toc-balance-sheet" class="nav-link" data-scroll-target="#balance-sheet">Balance Sheet</a></li>
+  <li><a href="#income-statement" id="toc-income-statement" class="nav-link" data-scroll-target="#income-statement">Income Statement</a></li>
+  <li><a href="#cash-flow-statement" id="toc-cash-flow-statement" class="nav-link" data-scroll-target="#cash-flow-statement">Cash Flow Statement</a></li>
+  </ul></li>
+  <li><a href="#branch-nicolas-beahan-and-runte" id="toc-branch-nicolas-beahan-and-runte" class="nav-link" data-scroll-target="#branch-nicolas-beahan-and-runte">Branch: Nicolas, Beahan and Runte</a>
+  <ul class="collapse">
+  <li><a href="#balance-sheet-1" id="toc-balance-sheet-1" class="nav-link" data-scroll-target="#balance-sheet-1">Balance Sheet</a></li>
+  <li><a href="#income-statement-1" id="toc-income-statement-1" class="nav-link" data-scroll-target="#income-statement-1">Income Statement</a></li>
+  <li><a href="#cash-flow-statement-1" id="toc-cash-flow-statement-1" class="nav-link" data-scroll-target="#cash-flow-statement-1">Cash Flow Statement</a></li>
+  </ul></li>
+  <li><a href="#branch-kutch-quigley" id="toc-branch-kutch-quigley" class="nav-link" data-scroll-target="#branch-kutch-quigley">Branch: Kutch-Quigley</a>
+  <ul class="collapse">
+  <li><a href="#balance-sheet-2" id="toc-balance-sheet-2" class="nav-link" data-scroll-target="#balance-sheet-2">Balance Sheet</a></li>
+  <li><a href="#income-statement-2" id="toc-income-statement-2" class="nav-link" data-scroll-target="#income-statement-2">Income Statement</a></li>
+  <li><a href="#cash-flow-statement-2" id="toc-cash-flow-statement-2" class="nav-link" data-scroll-target="#cash-flow-statement-2">Cash Flow Statement</a></li>
+  </ul></li>
+  <li><a href="#branch-dubuque-metz-and-heathcote" id="toc-branch-dubuque-metz-and-heathcote" class="nav-link" data-scroll-target="#branch-dubuque-metz-and-heathcote">Branch: DuBuque, Metz and Heathcote</a>
+  <ul class="collapse">
+  <li><a href="#balance-sheet-3" id="toc-balance-sheet-3" class="nav-link" data-scroll-target="#balance-sheet-3">Balance Sheet</a></li>
+  <li><a href="#income-statement-3" id="toc-income-statement-3" class="nav-link" data-scroll-target="#income-statement-3">Income Statement</a></li>
+  <li><a href="#cash-flow-statement-3" id="toc-cash-flow-statement-3" class="nav-link" data-scroll-target="#cash-flow-statement-3">Cash Flow Statement</a></li>
+  </ul></li>
+  <li><a href="#branch-toy-schamberger" id="toc-branch-toy-schamberger" class="nav-link" data-scroll-target="#branch-toy-schamberger">Branch: Toy-Schamberger</a>
+  <ul class="collapse">
+  <li><a href="#balance-sheet-4" id="toc-balance-sheet-4" class="nav-link" data-scroll-target="#balance-sheet-4">Balance Sheet</a></li>
+  <li><a href="#income-statement-4" id="toc-income-statement-4" class="nav-link" data-scroll-target="#income-statement-4">Income Statement</a></li>
+  <li><a href="#cash-flow-statement-4" id="toc-cash-flow-statement-4" class="nav-link" data-scroll-target="#cash-flow-statement-4">Cash Flow Statement</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -90,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Parametised Financial Reporting</h1>
+<h1 class="title">Parametised Financial Reporting in R with Quarto</h1>
 </div>
 
 
@@ -120,12 +161,46 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div style="page-break-after: always;"></div>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This report provides a detailed financial analysis of our company’s branches across different regions.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Financial reporting is a critical function for any business, enabling stakeholders to assess performance, identify trends, and make data-driven decisions. Traditionally, many companies rely on manual Excel work to generate financial reports, which can be time-consuming, error-prone, and difficult to scale. This project leverages Quarto and R to build a parametised financial reporting system that automates the generation of income statements, balance sheets, and workflow statements for different company branches. By adopting parametised reporting, companies can significantly improve efficiency, accuracy, and reproducibility in their financial workflows.</p>
 </section>
-<section id="financial-data-overview" class="level2">
-<h2 class="anchored" data-anchor-id="financial-data-overview">Financial Data Overview</h2>
+<section id="scope-of-the-project" class="level2">
+<h2 class="anchored" data-anchor-id="scope-of-the-project">Scope of the Project</h2>
+<p>This project is designed to handle financial reporting for multiple branches of a company by utilising a parametised approach in Quarto. The core components include:</p>
+<ol type="1">
+<li>Income Statements – Automating revenue, expenses, and profitability reporting.</li>
+<li>Balance Sheets – Structuring assets, liabilities, and equity analysis for different time periods.</li>
+<li>Workflow Statements – Capturing financial movement and operational efficiency metrics.</li>
+<li>Branch-wise Customization – Generating reports dynamically for different business units, eliminating the need for manual adjustments.</li>
+</ol>
+<p>The Quarto framework, combined with R Markdown, provides an elegant and scalable way to generate financial reports that are adaptable, data-driven, and reproducible.</p>
+</section>
+<section id="why-parametised-reporting-is-better-than-manual-excel-work" class="level2">
+<h2 class="anchored" data-anchor-id="why-parametised-reporting-is-better-than-manual-excel-work">Why parametised reporting is better than manual Excel work</h2>
+<p>Many organizations still rely on Excel for financial reporting, often involving extensive manual data entry and formatting. While Excel is a powerful tool, it presents several challenges:</p>
+<ul>
+<li><p>Human Error: Manual data entry increases the risk of errors in calculations and formatting.</p></li>
+<li><p>Time-Consuming: Preparing reports for multiple branches or time periods requires repetitive work.</p></li>
+<li><p>Lack of Reproducibility: Each report is manually created, making it difficult to track changes and ensure consistency.</p></li>
+<li><p>Scalability Issues: As businesses grow, Excel-based workflows struggle to handle larger datasets efficiently.</p></li>
+<li><p>Limited Automation: Advanced data manipulation, filtering, and summarisation require complex VBA scripts, which are difficult to maintain.</p></li>
+</ul>
+<p>By using parametised reporting in R with Quarto, we can:</p>
+<ul>
+<li><p>Automate Report Generation: Reduce time spent on redundant tasks by dynamically generating reports for different branches.</p></li>
+<li><p>Enhance Accuracy: Minimize human error through direct data integration and automated calculations.</p></li>
+<li><p>Ensure Reproducibility: Easily track report versions and updates using a structured codebase.</p></li>
+<li><p>Improve Customization: Generate tailored reports with filters and dynamic content for specific business needs.</p></li>
+<li><p>Increase Scalability: Handle large datasets and complex financial structures with ease.</p></li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This project provides a robust framework for financial reporting by leveraging the power of Quarto and R. By transitioning from manual Excel-based workflows to a data-driven, automated approach, businesses can streamline reporting, reduce errors, and improve decision-making processes. Through parametised reporting, companies can ensure consistency, efficiency, and scalability, making financial analysis more insightful and actionable. As we proceed, we will explore the step-by-step implementation of this system, covering data handling, report structuring, parameter integration, and final output generation to demonstrate the full potential of Quarto for financial reporting.</p>
+</section>
+<section id="financial-overview" class="level2">
+<h2 class="anchored" data-anchor-id="financial-overview">Financial overview</h2>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -305,8 +380,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="parameterized-reports-by-branch" class="level2">
-<h2 class="anchored" data-anchor-id="parameterized-reports-by-branch">Parameterized Reports by Branch</h2>
+<section id="parameterised-reports-by-branch" class="level2">
+<h2 class="anchored" data-anchor-id="parameterised-reports-by-branch">Parameterised Reports by Branch</h2>
 </section>
 <section id="branch-ward-inc" class="level2">
 <h2 class="anchored" data-anchor-id="branch-ward-inc">Branch: Ward Inc</h2>
