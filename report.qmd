@@ -2,7 +2,11 @@
 title: "Parametised Financial Reporting"
 author: "Aaron H. Green"
 date: "2025-02-26"
-format: html
+format:
+  html:
+    toc: true
+    toc-location: left
+    html-math-method: katex
 execute: 
   warning: false
   error: false
@@ -99,7 +103,7 @@ kable(head(df), format = "pipe")
 
 ## Parameterized Reports by Branch
 
-```{r, results='asis', echo=FALSE}
+```{r, results='asis', echo=FALSE, results='asis'}
 branches <- unique(df$Branch)
 for (branch in branches) {
   cat("## Branch: ", branch, "\n\n")
