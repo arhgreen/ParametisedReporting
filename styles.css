@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0056b3;
+}
+
+cover-page {
+  background-color: #0056b3;
+  color: white;
+  padding: 50px;
+  text-align: center;
+}
+
+cover-page h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+cover-page h2 {
+  font-size: 2em;
+  margin: 0;
+}

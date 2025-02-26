@@ -1,0 +1,66 @@
+---
+title: "Financial Report"
+author: "Your Name"
+date: "2025-02-26"
+format: pdf
+include-in-header: styles.css
+---
+
+# Financial Report
+
+## Introduction
+
+This report provides a detailed financial analysis of our company's branches across different regions.
+
+## Financial Data
+
+```{r}
+library(tibble)
+library(dplyr)
+library(knitr)
+
+# Load data
+df <- read.csv('financial_data.csv')
+
+kable(head(df), format = "pipe")
+```
+
+## Balance Sheet
+
+```{r}
+balance_sheet <- df %>%
+  group_by(Branch, Year) %>%
+  summarise(
+    Total_Assets = sum(Assets),
+    Total_Liabilities = sum(Liabilities),
+    Total_Equity = sum(Equity)
+  )
+
+kable(balance_sheet, format = "pipe")
+```
+
+## Income Statement
+
+```{r}
+income_statement <- df %>%
+  group_by(Branch, Year) %>%
+  summarise(
+    Total_Income = sum(Income),
+    Total_Expenses = sum(Expenses),
+    Net_Income = sum(Income) - sum(Expenses)
+  )
+
+kable(income_statement, format = "pipe")
+```
+
+## Cash Flow Statement
+
+```{r}
+cash_flow_statement <- df %>%
+  group_by(Branch, Year) %>%
+  summarise(
+    Total_CashFlow = sum(CashFlow)
+  )
+
+kable(cash_flow_statement, format = "pipe")
+```

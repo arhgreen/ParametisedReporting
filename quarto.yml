@@ -1,0 +1,13 @@
+project:
+  type: book
+
+book:
+  title: "Financial Report"
+  author: "Your Name"
+  date: "2025-02-26"
+  chapters: 
+    - report.qmd
+format:
+  pdf:
+    keep-md: true
+    include-in-header: styles.css
