@@ -1,7 +1,7 @@
 ---
 title: "Parametised Financial Reporting in R with Quarto"
 author: "Aaron H. Green"
-date: "2025-02-26"
+date: "2025-01-26"
 format:
   html:
     toc: true
@@ -59,10 +59,6 @@ By using parametised reporting in R with Quarto, we can:
 -   Improve Customization: Generate tailored reports with filters and dynamic content for specific business needs.
 
 -   Increase Scalability: Handle large datasets and complex financial structures with ease.
-
-## Conclusion
-
-This project provides a robust framework for financial reporting by leveraging the power of Quarto and R. By transitioning from manual Excel-based workflows to a data-driven, automated approach, businesses can streamline reporting, reduce errors, and improve decision-making processes. Through parametised reporting, companies can ensure consistency, efficiency, and scalability, making financial analysis more insightful and actionable. As we proceed, we will explore the step-by-step implementation of this system, covering data handling, report structuring, parameter integration, and final output generation to demonstrate the full potential of Quarto for financial reporting.
 
 ## Financial overview
 
